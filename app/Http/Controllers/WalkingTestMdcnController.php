@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\WalkingTestMdcn;
 use Illuminate\Http\Request;
-use App\Models\{Doctores, Labes, madicenes, Lab_billes, Mdcn_billes};
+use App\Models\{Doctores, Labes, Madicenes, Lab_billes, Mdcn_billes};
 
 
 class WalkingTestMdcnController extends Controller
@@ -78,7 +78,7 @@ class WalkingTestMdcnController extends Controller
 
     public function mdcn_Bill(Request $request)
     {
-        $madi = madicenes::all();
+        $madi = Madicenes::all();
         $url = url('mdcn-Bill/manage');
         return view('mdcn-bill')->with(compact('madi', 'url'));
     }
@@ -91,7 +91,7 @@ class WalkingTestMdcnController extends Controller
     public function madcn_dropdown1(Request $request){
         // return $request;
         $id = $request->mdcn_id;
-        $lab = madicenes::where('madi_id', $id)->first();
+        $lab = Madicenes::where('madi_id', $id)->first();
         $price = $lab->madi_priceP;
         return response()->json(compact('price'));
 
@@ -112,7 +112,7 @@ class WalkingTestMdcnController extends Controller
         // return $request;
         $id = $request->mdcn_id;
         $dr_dropdown = $request->dr_dropdown;
-        $lab = madicenes::where('madi_id', $id)->first();
+        $lab = Madicenes::where('madi_id', $id)->first();
         $dr = Doctores::where('doctor_id', $dr_dropdown)->first();
        $dr_fee=0;
         if ($request->Treatment == 1) {
@@ -153,7 +153,7 @@ class WalkingTestMdcnController extends Controller
     public function index()
     {
         $url = url('test-mdcn');
-        $madi = madicenes::all();
+        $madi = Madicenes::all();
         $lab = Labes::all();
         return view('test-mdcn1')->with(compact('url', 'madi', 'lab'));
     }

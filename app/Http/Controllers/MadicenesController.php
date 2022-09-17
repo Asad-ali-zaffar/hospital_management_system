@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\madicenes;
+use App\Models\Madicenes;
 use Illuminate\Http\Request;
 
 class MadicenesController extends Controller
@@ -15,7 +15,7 @@ class MadicenesController extends Controller
     public function index()
     {
         $url=url('Madicenes');
-        return view('add_madicenes')->with(compact('url'));
+        return view('add_Madicenes')->with(compact('url'));
     }
 
     /**
@@ -44,12 +44,12 @@ class MadicenesController extends Controller
             'madi_type'=>'required'
 
         ]);
-        $madicenes=new madicenes;
-        $madicenes->madi_name=$request->input('madi_name');
-        $madicenes->madi_type=$request->input('madi_type');
-        $madicenes->madi_priceP=$request->input('madi_priceP');
-        $madicenes->madi_priceS=$request->input('madi_priceS');
-        $madicenes->save();
+        $Madicenes=new Madicenes;
+        $Madicenes->madi_name=$request->input('madi_name');
+        $Madicenes->madi_type=$request->input('madi_type');
+        $Madicenes->madi_priceP=$request->input('madi_priceP');
+        $Madicenes->madi_priceS=$request->input('madi_priceS');
+        $Madicenes->save();
         return redirect('Madicenes/show')->with('success','Record has been registered successfully');
 
     }
@@ -57,36 +57,36 @@ class MadicenesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\madicenes  $madicenes
+     * @param  \App\Models\Madicenes  $Madicenes
      * @return \Illuminate\Http\Response
      */
-    public function show(madicenes $madicenes)
+    public function show(Madicenes $Madicenes)
     {
-        $madicenes=madicenes::paginate(100);
-        $total=count($madicenes);
-        $title="All Medicine";
-        return view('madicenes_manage')->with(compact('madicenes','total','title'));
+        $Madicenes=Madicenes::paginate(100);
+        $total=count($Madicenes);
+        $title="All Madicen";
+        return view('Madicenes_manage')->with(compact('Madicenes','total','title'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\madicenes  $madicenes
+     * @param  \App\Models\Madicenes  $Madicenes
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $madicenes=madicenes::where('madi_id',$id)->get();
+        $Madicenes=Madicenes::where('madi_id',$id)->get();
         $url=url('Madicenes').'/'.$id;
-        return view('update_madicen')->with(compact('madicenes','url'));
+        return view('update_Madicen')->with(compact('Madicenes','url'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\madicenes  $madicenes
+     * @param  \App\Models\Madicenes  $Madicenes
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +99,7 @@ class MadicenesController extends Controller
             'madi_type'=>'required',
         ]);
 
-        madicenes::where('madi_id',$id)->update([
+        Madicenes::where('madi_id',$id)->update([
             'madi_name'=>$request->input('madi_name'),
             'madi_type'=>$request->input('madi_type'),
             'madi_priceP'=>$request->input('madi_priceP'),
@@ -111,12 +111,12 @@ class MadicenesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\madicenes  $madicenes
+     * @param  \App\Models\Madicenes  $Madicenes
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        madicenes::where('madi_id',$id)->delete();
+        Madicenes::where('madi_id',$id)->delete();
         return redirect('Madicenes/show')->with('success','Record has been successfully deleted');
     }
 }

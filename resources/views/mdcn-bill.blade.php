@@ -44,9 +44,9 @@
 
                                         <thead>
                                             <tr>
-                                                <th class="required">Select MDCN</th>
-                                                <th class="required">Quantity(MDCN)</th>
-                                                <th class="required">MDCN Price</th>
+                                                <th class="required">Select Medicine</th>
+                                                <th class="required">Quantity(Medicine)</th>
+                                                <th class="required">Medicine Price</th>
                                                 <th><input id="addrow-1" class="btn btn-primary btnsmall text-right"
                                                         value="Add Row"></th>
                                             </tr>

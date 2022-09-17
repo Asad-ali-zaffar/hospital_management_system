@@ -463,11 +463,11 @@
                                                 <div class="form-floating input-group input-group-solid mb-5">
                                                     <select class="form-select " id="procedure" name="procedure"
                                                         aria-label="Floating label select example">
-                                                        <option value="{{ $val->id }}" selected>
-                                                            {{ $val->procedures_name }}</option>
+                                                        <option value="{{ $val->procedure }}" selected>
+                                                           {{App\Models\procedure::getprocedureById( $val->procedure)}}</option>
 
                                                         @foreach ($procedure as $vall)
-                                                            @if ($vall->id != $val->id)
+                                                            @if ($vall->id != $val->procedure)
                                                                 <option value="{{ $vall->id }}">
                                                                     {{ $vall->procedures_name }}
                                                                 </option>
@@ -661,7 +661,7 @@
                                                                             $Lab_Quantity = explode(',', $val->Lab_Quantity);
                                                                         @endphp
                                                                         <input type="number" name="Lab_Quantity[]"
-                                                                            class="form-control Lab_discount"
+                                                                            class="form-control Lab_discount disabled disabled{{$key}}"
                                                                             aria-label="Amount (to the nearest dollar)"
                                                                             id="Lab_discount-{{$key}}"
                                                                             value="{{ $Lab_Quantity[$key] }}" min="0" />
@@ -683,7 +683,7 @@
                                                                             class="form-control Lab_Price"
                                                                             aria-label="Amount (to the nearest dollar)"
                                                                             value="{{ $Lab_Price[$key] }}" min="0"
-                                                                            id="lab_prices-{{$key}}" />
+                                                                            id="lab_prices-{{$key}}" readonly/>
                                                                         <span class="input-group-text">.00</span>
                                                                         <span class="text-danger">
                                                                             @error('Lab_price')
@@ -748,9 +748,9 @@
                                                                             id="mdcn-{{ $key }}"
                                                                             aria-label="Floating label select example">
                                                                             <option value="{{ $data }}" selected>
-                                                                                {{ App\Models\madicenes::getLabNameById($data) }}
+                                                                                {{ App\Models\Madicenes::getLabNameById($data) }}
                                                                             </option>
-                                                                            @foreach ($madicenes as $vall)
+                                                                            @foreach ($Madicenes as $vall)
                                                                                 @if ($data != $vall->madi_id)
                                                                                     <option value="{{ $vall->madi_id }}">
                                                                                         {{ $vall->madi_name }}
@@ -778,7 +778,7 @@
                                                                         @endphp
                                                                         <input type="number" name="mdcn_Quantity[]"
                                                                             id="mdcn_discount-{{$key}}"
-                                                                            class="form-control mdcn_discount"
+                                                                            class="form-control mdcn_discount  disabled-mdcn"
                                                                             aria-label="Amount (to the nearest dollar)"
                                                                             value="{{ $mdcn_Quantity[$key] }}" min="0" />
                                                                         <span class="input-group-text">%</span>
@@ -797,9 +797,9 @@
                                                                         @endphp
                                                                         <input type="number" name="MDCN_Price[]"
                                                                             id="MDCN_Price-{{ $key }}"
-                                                                            class="form-control MDCN_Price"
+                                                                            class="form-control MDCN_Price "
                                                                             aria-label="Amount (to the nearest dollar)"
-                                                                            value="{{ $MDCN_Price[$key] }}" min="0" />
+                                                                            value="{{ $MDCN_Price[$key] }}" min="0" readonly />
                                                                         <span class="input-group-text">.00</span>
                                                                         <span class="text-danger">
                                                                             @error('MDCN_Price')
@@ -876,6 +876,9 @@
         let MDCN_Price;
         let test_price;
         $(document).ready(function() {
+            $(".disabled").attr("readonly", true);
+            $(".disabled-mdcn").attr("readonly", true);
+
             $(document).on("change", "#PRIVATE_SEHAT_CARD", function() {
 
                 Treatment = $(this).val();
@@ -888,6 +891,8 @@
                 Treatment = $('#PRIVATE_SEHAT_CARD').val();
                 dr_dropdown = $('#dr_dropdown').val();
                 curent_id = curent_id.replace("mdcn-", "");
+                $('#mdcn_discount-'+curent_id).attr("readonly", false);
+                $('#mdcn_discount-' + curent_id).val("0");
                 mdcn_vari = mdcnDropdown(mdcn_id, curent_id, Treatment, dr_dropdown);
                 console.log($('#mdcn_discount-' + curent_id).val());
                 lab = parseFloat(MDCN_Price) + parseFloat($('#sumcv-Mdcn').val());
@@ -950,11 +955,13 @@
                 });
             };
             $(document).on("change", ".lab-dropdown", function() {
+
                 let lab_id = $(this).val();
                 Treatment = $('#PRIVATE_SEHAT_CARD').val();
                 dr_dropdown = $('#dr_dropdown').val();
                 curent_id = $(this).attr('id');
                 curent_id = curent_id.replace("lab-dropdown-", "");
+                $('#Lab_discount-'+curent_id).attr("readonly", false);
                 let vari = programsDropdown(lab_id, curent_id, Treatment, dr_dropdown);
                 $('#Lab_discount-' + curent_id).val("0");
                 lab = parseFloat(lab_price) + parseFloat($('#sumcv').val());
@@ -1120,7 +1127,7 @@
                     $("#sumdv").val(dvamou);
                 });
             });
-            var arrayFromPHP = <?php echo json_encode($madicenes); ?>;
+            var arrayFromPHP = <?php echo json_encode($Madicenes); ?>;
 
             function rows_fu() {
                 count++;

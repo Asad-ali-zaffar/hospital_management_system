@@ -144,7 +144,7 @@
                             <p style="font-weight: 600; "><b>#</b></p>
                         </div>
                         <div class="col-md-2 text-center mt-1">
-                            <p style="font-weight: 600;"><b>Mdcn</b></p>
+                            <p style="font-weight: 600;"><b>Madison</b></p>
                         </div>
                         <div class="col-md-3 text-center mt-1">
                             <p style="font-weight: 600;"><b>Unit Price</b>
@@ -176,7 +176,7 @@
 
                             @endphp
                             @foreach ($buss as $val)
-                                {{ App\Models\madicenes::getLabNameById($val) }}
+                                {{ App\Models\Madicenes::getLabNameById($val) }}
                                 <br>
                             @endforeach
                         </div>
@@ -185,7 +185,7 @@
                                 $buss = explode(',', $admistion->madi_id);
                             @endphp
                             @foreach ($buss as $val)
-                                {{ App\Models\madicenes::getLabPriceById($val) }}.00
+                                {{ App\Models\Madicenes::getLabPriceById($val) }}.00
                                 <br>
                             @endforeach
 
@@ -220,7 +220,7 @@
                     <br>
                     <div class="row">
                         <h6 class="col-md-6"><b>Total Item:</b> {{ $m }}</h6>
-                        <h6 class="col-md-5 text-right"><b>Total MDCN Bill:</b> {{ $admistion->Mdcnammount }}</h6>
+                        <h6 class="col-md-5 text-right"><b>Total Madison Bill:</b> {{ $admistion->Mdcnammount }}</h6>
                     </div>
                 </div>
                 <br><br><br>
@@ -341,7 +341,7 @@
                     <div class="col-md-2" style="font-weight: 600;">
                         {{ $admistion->Labsum }}.00</div>
                     <div class="col-md-10 text-right" style="font-weight: 600;">
-                        <b>MDCN Bill</b>
+                        <b>Madison Bill</b>
                     </div>
                     <div class="col-md-2" style="font-weight: 600;">
                         {{ $admistion->Mdcnammount }}.00</div>

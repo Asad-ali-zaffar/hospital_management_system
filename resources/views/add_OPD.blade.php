@@ -391,7 +391,7 @@
                                     <input class="form-check-input me-3 " name="MDCN12"
                                         type="checkbox" value="Labes" id="MDCN12" />
                                     <label class="form-check-label " for="MDCN12">
-                                        <div class="fw-bolder text-gray-800">MDCN</div>
+                                        <div class="fw-bolder text-gray-800">Madison</div>
                                     </label>
                                 </div>
                                 <legend class="form-control MDCN12 d-none">
@@ -402,9 +402,9 @@
 
                                                 <thead>
                                                     <tr>
-                                                        <th class="required">Select MDCN</th>
-                                                        <th class="required">Quantity(MDCN)</th>
-                                                        <th class="required">MDCN Price</th>
+                                                        <th class="required">Select Madison</th>
+                                                        <th class="required">Quantity(Madison)</th>
+                                                        <th class="required">Madison Price</th>
                                                         <th><input id="addrow-1"
                                                                 class="btn btn-primary btnsmall text-right"
                                                                 value="Add Row"></th>
@@ -423,7 +423,7 @@
                                                                 <select class="form-select mdcn" name="mdcn[]" id="mdcn-0"
                                                                     aria-label="Floating label select example">
                                                                     <option value="" selected>Open this select menu</option>
-                                                                    @foreach ($madicenes as $val)
+                                                                    @foreach ($Madicenes as $val)
                                                                         <option value="{{ $val->madi_id }}">
                                                                             {{ $val->madi_name }}
                                                                         </option>
@@ -796,7 +796,7 @@
                     $("#sumdv").val(dvamou);
                 });
             });
-            var arrayFromPHP = <?php echo json_encode($madicenes); ?>;
+            var arrayFromPHP = <?php echo json_encode($Madicenes); ?>;
 
             function rows_fu() {
                 count++;

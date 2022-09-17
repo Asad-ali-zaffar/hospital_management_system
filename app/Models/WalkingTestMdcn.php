@@ -17,7 +17,7 @@ class WalkingTestMdcn extends Model
     }
 
     public function getMdcn(){
-        return $this->hasMany('App\Models\madicenes','madi_id','madi_id');
+        return $this->hasMany('App\Models\Madicenes','madi_id','madi_id');
     }
 
     public static function getLabNameById($id){

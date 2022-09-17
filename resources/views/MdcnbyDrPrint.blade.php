@@ -46,429 +46,360 @@
 
     <div class="page">
         <div class="page-inner">
-            <h3 class="text-center">Subhan Hospital Chiniot</h3>
-            <p class="text-center font-weight-bold mb-0">ADDRESS:</p>
-            <p class="text-center font-weight-bold mb-0"> Dr
-                {{ App\Models\Doctores::getDoctoresById($request->dr_id) }}
-                Pharmacy & Labes Report</p>
-
+            <p class="text-center  mb-0 text-uppercase">{{ App\Models\Doctores::getDoctoresById($request->dr_id) }}
+                Admission & OPD Report</p>
+            <h3 class="text-center text-uppercase"><b>Subhan Hospital Chiniot</b></h3>
+            <h3 class="text-center text-uppercase">your look is our concern</h3>
+            <p class="text-center font-weight-bold mb-0">Jumra Chowk Jhang Road Chiniot</p>
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-6">
                         <p class=" font-weight-bold mb-0">From Date:&nbsp;
-                            {{ date('d-y-M', strtotime($request->from)) }}
+                            {{ date('d-M-y', strtotime($request->from)) }}
                         </p>
                     </div>
                     <div class="col-6">
                         <p class=" font-weight-bold mb-0">To Date:&nbsp;
-                            {{ date('d-y-M', strtotime($request->To)) }}
+                            {{ date('d-M-y', strtotime($request->To)) }}
                         </p>
                     </div>
                 </div>
             </div>
             <legend>Admission</legend>
             <fieldset>
-                @foreach ($ADMISIONES as $val)
-                    <div class="container ">
-                        <div class="row">
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">Patient Name:&nbsp;
-                                    {{ $val->Patient_Name }}
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">MR No:&nbsp;
-                                    {{ $val->mr_no }}
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">Visit No:&nbsp;
-                                    {{ $val->visit_no }}
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">CASE TYPE:&nbsp;
-                                    {{ $val->CASE_TYPE }}
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">Department:&nbsp;
-                                    {{ $val->Type_Department }}
-                                </p>
-                            </div>
+
+                <div class="container ">
+                    @php
+                        $key = 1;
+                        $share = 0;
+                        $sharereff = 0;
+                        $sum = 0;
+                    @endphp
+                    <div class="row" style="background-color: #b5b5b5;border-radius: 6px;height:55px;">
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600; "><b>#</b> </p>
+
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Name</b></p>
+
+                        </div>
+                        <div class="col-md-2 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Date</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Visit No</b>
+                            </p>
+                        </div>
+                        <div class="col-md-2 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Procedure</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Madicen Bill</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Lab Bill</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Total Amt</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Dr share</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Total</b>
+                            </p>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="row" style="background-color: #b5b5b5;
-                        border-radius: 6px;height:35px;">
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600; "><b>#</b></p>
+                    @foreach ($ADMISIONES as $val)
+                        <div class="row" style="font-weight: 600; border: 1px solid;">
+                            <div class="col-md-1 text-left mt-2">
+                                <p>{{ $key++ }}</p>
                             </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Lab Test</b></p>
+                            <div class="col-md-1 text-left mt-2">
+                                {{ $val->Patient_Name }}</p>
                             </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Quantity</b>
+
+
+                            <div class="col-md-2 text-left mt-2">
+                                <p>{{ date('d-m-Y', strtotime($val->date)) }}
                                 </p>
                             </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Amount</b>
+                            <div class="col-md-1 text-left mt-2" style="overflow:hidden">
+                                <p style="font-weight: 600;">{{ $val->visit_no }}
                                 </p>
                             </div>
-                        </div>
-                        <div class="row">
-
-                            @php
-                                $Lab_id = explode(',', $val->lab_id);
-                                $Lab_Quantity = explode(',', $val->Lab_Quantity);
-                                $Lab_Price = explode(',', $val->Lab_Price);
-                            @endphp
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach ($Lab_id as $key1 => $v)
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-
-                                    {{ $i }}
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ App\Models\WalkingTestMdcn::getLabNameById($v) }}
-
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $Lab_Quantity[$key1] }}
-
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $Lab_Price[$key1] }}
-                                </div>
-                                @php
-                                    $i++;
-                                @endphp
-                            @endforeach
-
-                            <div class="col-md-11 text-right" style="font-weight: 600;">
-                                <br>
-                                <b>Total Labes Bill:</b> {{ $val->Labsum }}
+                            <div class="col-md-2 text-left mt-2">
+                                <p style="font-weight: 600;">
+                                    {{ App\Models\procedure::getprocedureById($val->procedure) }}
+                                </p>
                             </div>
-                            {{-- <div class="row">
-                                <h6 class="col-md-11 text-right"><b>Discount:</b>
-                                    @if (strpos($val->dcnammount, '%'))
-                                        {{ $val->dcnammount }}
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">{{ $val->Mdcnammount }}
+                                </p>
+                            </div>
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">{{ $val->Labsum }}</p>
+                            </div>
+
+
+                            @php
+                                $sum += $val->total;
+                            @endphp
+                            <div class="col-md-1 text-left mt-2">
+
+                                <p style="font-weight: 600;">
+
+                                    {{ $val->total }}
+                                </p>
+                            </div>
+
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">
+                                    @if (strpos($request->share, '%'))
+                                        @php
+                                            $Drshare = str_replace(' ', '%', $request->share);
+                                            $shareDr = ((int) $Drshare * (int) $val->total) / 100;
+                                            $total = $val->total - $shareDr;
+                                            $share += $shareDr;
+                                        @endphp
+                                        {{ $request->share }}<br>
+                                        {{ $shareDr }}.00
                                     @else
-                                        {{ $val->dcnammount }}.00
+                                        @php
+                                            $share += $request->share;
+                                        @endphp
+                                        {{ $request->share }}.00
                                     @endif
-                                </h6>
-                                <h6 class="col-md-11 text-right"><b>Total Bill:</b> {{ $val->total }}</h6>
-                            </div> --}}
-                        </div>
-                        <br>
-                        @php
-                            $i++;
-                        @endphp
-                    </div>
-                    <div class="container">
-                        <div class="row" style="background-color: #b5b5b5;
-                    border-radius: 6px;height:35px;">
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600; "><b>#</b></p>
-                            </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>MDCN name</b></p>
-                            </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Quantity</b>
+
                                 </p>
                             </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Amount</b>
+
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">
+                                    @if (strpos($total, '.'))
+                                        {{ $total }}
+                                    @else
+                                        {{ $val->total }}.00
+                                    @endif
                                 </p>
                             </div>
                         </div>
-                        @php
-                            $i = 1;
-                        @endphp
-                        <div class="row">
-
-                            @php
-                                $madi_id = explode(',', $val->madi_id);
-                                $mdcn_Quantity = explode(',', $val->mdcn_Quantity);
-                                $MDCN_Price = explode(',', $val->MDCN_Price);
-                            @endphp
-                            @foreach ($madi_id as $key1 => $v)
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-
-                                    {{ $i }}
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ App\Models\madicenes::getLabNameById($v) }}
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $mdcn_Quantity[$key1] }}
-
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $MDCN_Price[$key1] }}
-                                </div>
-                                @php
-                                    $i++;
-                                @endphp
-                            @endforeach
-
-                            <div class="col-md-11 text-right" style="font-weight: 600;">
-                                <br>
-                                <b>Madison Bill :</b> {{ $val->Mdcnammount }}
-                            </div>
-                        </div>
-
-                        {{-- <br> --}}
-                        {{-- <div class="row">
-                            <h6 class="col-md-11 text-right"><b>Share:</b>
-
-                            </h6>
-                            @php
-                                $sum = $val->Mdcnammount + $val->procedure;
-                            @endphp
-                            <h6 class="col-md-11 text-right"><b>Total Bill:</b>
-                                 {{ $val->Mdcnammount }}
-                                </h6>
-                        </div> --}}
-                        {{-- <h6 class="col-md-11 text-right"><b>Total Amount:</b>
-                            {{ $sum }}
-                        </h6> --}}
-
-
-
-                        {{-- <h6 class="col-md-11 text-right"><b>Dr Share :</b>
-                            @if (strpos($request->share, '%'))
-                                {{ $request->share }}
-                                <br><b>Dr Amount :</b>
-                                {{ $share }}.00
-                            @else
-                                {{ $request->share }}.00
-                            @endif
-                        </h6> --}}
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </fieldset>
             <legend>OPD</legend>
             <fieldset>
-                @foreach ($opd as $val)
-                    <div class="container ">
-                        <div class="row">
 
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">MR No:&nbsp;
-                                    {{ $val->mr_no }}
+                <div class="container ">
+                    @php
+                        $key1 = 1;
+                        $share1 = 0;
+                        $sharereff1 = 0;
+                        $sum1 = 0;
+                    @endphp
+                    <div class="row" style="background-color: #b5b5b5;border-radius: 6px;height:55px;">
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600; "><b>#</b> </p>
+
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Name</b></p>
+
+                        </div>
+                        <div class="col-md-2 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Date</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Visit No</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Dept</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-right mt-1">
+                            <p style="font-weight: 600;"><b>U/S</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Madicen Bill</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Lab Bill</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Total Amt</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Dr share</b>
+                            </p>
+                        </div>
+                        <div class="col-md-1 text-left mt-1">
+                            <p style="font-weight: 600;"><b>Total</b>
+                            </p>
+                        </div>
+                    </div>
+                    @foreach ($opd as $val)
+                        <div class="row" style="font-weight: 600; border: 1px solid;">
+                            <div class="col-md-1 text-left mt-2">
+                                <p>{{ $key++ }}</p>
+                            </div>
+                            <div class="col-md-1 text-left mt-2">
+                                {{ $val->Patient_Name }}</p>
+                            </div>
+
+
+                            <div class="col-md-2 text-left mt-2">
+                                <p>{{ date('d-m-Y', strtotime($val->date)) }}
                                 </p>
                             </div>
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">Visit No:&nbsp;
-                                    {{ $val->visit_no }}
+                            <div class="col-md-1 text-left mt-2" style="overflow:hidden">
+                                <p style="font-weight: 600;">{{ $val->visit_no }}
                                 </p>
                             </div>
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">Patient Name:&nbsp;
-                                    {{ $val->Patient_Name }}
-                                </p>
-                            </div>
-                            {{-- <div class="col-6">
-                                <p class=" font-weight-bold mb-0">CASE TYPE:&nbsp;
-                                    {{ $val->CASE_TYPE }}
-                                </p>
-                            </div> --}}
-                            <div class="col-6">
-                                <p class=" font-weight-bold mb-0">Department:&nbsp;
+                            <div class="col-md-1 text-left mt-2" style="overflow:hidden">
+                                <p style="font-weight: 600;">
                                     {{ $val->Type_Department }}
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row" style="background-color: #b5b5b5;
-                        border-radius: 6px;height:35px;">
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600; "><b>#</b></p>
-                            </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Lab Test</b></p>
-                            </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Quantity</b>
+                            <div class="col-md-1 text-right mt-2">
+                                <p style="font-weight: 600;">
+                                    {{ is_null($val->Ultrasound_price) ? 0 : $val->Ultrasound_price}}
                                 </p>
                             </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Amount</b>
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">{{ $val->Mdcnammount }}
                                 </p>
                             </div>
-                        </div>
-                        <div class="row">
-
-                            @php
-                                $Lab_id = explode(',', $val->lab_id);
-                                $Lab_Quantity = explode(',', $val->Lab_Quantity);
-                                $Lab_Price = explode(',', $val->Lab_Price);
-                            @endphp
-                            @php
-                                $i = 1;
-                            @endphp
-                            @foreach ($Lab_id as $key1 => $v)
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-
-                                    {{ $i }}
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ App\Models\WalkingTestMdcn::getLabNameById($v) }}
-
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $Lab_Quantity[$key1] }}
-
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $Lab_Price[$key1] }}
-                                </div>
-                                @php
-                                    $i++;
-                                @endphp
-                            @endforeach
-
-                            <div class="col-md-11 text-right" style="font-weight: 600;">
-                                <br>
-                                <b>Total Labes Bill:</b> {{ $val->Labsum }}
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">{{ $val->Labsum }}</p>
                             </div>
-                            {{-- <div class="row">
-                                <h6 class="col-md-11 text-right"><b>Discount:</b>
-                                    @if (strpos($val->dcnammount, '%'))
-                                        {{ $val->dcnammount }}
+
+
+                            @php
+                                $sum += $val->total;
+                            @endphp
+                            <div class="col-md-1 text-left mt-2">
+
+                                <p style="font-weight: 600;">
+
+                                    {{ $val->total }}
+                                </p>
+                            </div>
+
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">
+                                    @if (strpos($request->share, '%'))
+                                        @php
+                                            $Drshare = str_replace(' ', '%', $request->share);
+                                            $shareDr = ((int) $Drshare * (int) $val->total) / 100;
+                                            $total = $val->total - $shareDr;
+                                            $share += $shareDr;
+                                        @endphp
+                                        {{ $request->share }}<br>
+                                        {{ $shareDr }}.00
                                     @else
-                                        {{ $val->dcnammount }}.00
+                                        @php
+                                            $share += $request->share;
+                                        @endphp
+                                        {{ $request->share }}.00
                                     @endif
-                                </h6>
-                                <h6 class="col-md-11 text-right"><b>Total Bill:</b> {{ $val->total }}</h6>
-                            </div> --}}
-                        </div>
-                        <br>
-                        @php
-                            $i++;
-                        @endphp
-                    </div>
-                    <div class="container">
-                        <div class="row" style="background-color: #b5b5b5;
-                    border-radius: 6px;height:35px;">
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600; "><b>#</b></p>
-                            </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>MDCN name</b></p>
-                            </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Quantity</b>
+
                                 </p>
                             </div>
-                            <div class="col-md-3 text-center mt-1">
-                                <p style="font-weight: 600;"><b>Amount</b>
+
+                            <div class="col-md-1 text-left mt-2">
+                                <p style="font-weight: 600;">
+                                    @if (strpos($total , '.'))
+                                        {{ $total }}
+                                    @else
+                                        {{ $val->total }}.00
+                                    @endif
                                 </p>
                             </div>
                         </div>
-                        @php
-                            $i = 1;
-                        @endphp
-                        <div class="row">
-
-                            @php
-                                $madi_id = explode(',', $val->mdcn_id);
-                                $mdcn_Quantity = explode(',', $val->mdcn_Quantity);
-                                $MDCN_Price = explode(',', $val->MDCN_Price);
-                            @endphp
-                            @foreach ($madi_id as $key1 => $v)
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-
-                                    {{ $i }}
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ App\Models\madicenes::getLabNameById($v) }}
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $mdcn_Quantity[$key1] }}
-
-                                </div>
-                                <div class="col-md-3 text-center"
-                                    style="font-weight: 600; border: 1px solid;border-radius: 6px">
-                                    {{ $MDCN_Price[$key1] }}
-                                </div>
-                                @php
-                                    $i++;
-                                @endphp
-                            @endforeach
-
-                            <div class="col-md-11 text-right" style="font-weight: 600;">
-                                <br>
-                                <b>Madison Bill :</b> {{ $val->Mdcnammount }}
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </fieldset>
-            <br>
-            <div class="row">
-                <h6 class="col-md-11 text-right"><b>Share:</b>
-                    @if (strpos($request->share, '%'))
-                    {{ $request->share }}
-                    <br><b>Dr Amount :</b>
-                    {{ $resultes }}.00
-                @else
-                    {{ $request->share }}.00
-                @endif
-                </h6>
-                {{-- @php
-                    $sum = $val->Mdcnammount + $val->procedure;
-                @endphp --}}
-                <h6 class="col-md-11 text-right"><b>Total Bill:</b>
-                    {{ $Total_Bill }}
-                </h6>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 ">
+
+                    </div>
+                    <div class="col-md-8" style="font-weight: 600; border: 1px solid;">
+                        <div class="row">
+                            <p class="col-md-10 text-left mt-2 border-right">
+                                Total amount
+                            </p>
+                            <p class="col-md-2 text-left mt-2">
+                                {{ $sum1+$sum }}
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 ">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 ">
+
+                    </div>
+                    <div class="col-md-8" style="font-weight: 600; border: 1px solid;">
+                        <div class="row">
+                            <p class="col-md-10 text-left mt-2 border-right">
+                                Doctors Share
+                            </p>
+                            <p class="col-md-2 text-left mt-2">
+                                {{$share1+$share }}
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 ">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2 ">
+
+                    </div>
+                    <div class="col-md-8" style="font-weight: 600; border: 1px solid;">
+                        <div class="row">
+                            <p class="col-md-10 text-left mt-2 border-right">
+                                Subhan Hospital
+                            </p>
+                            <p class="col-md-2 text-left mt-2">
+                                {{ ($sum1+$sum)-($share1+$share)}}
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 ">
+                    </div>
+                </div>
             </div>
-            <h6 class="col-md-11 text-right"><b>Total Amount:</b>
-                {{ $request->total }}
-            </h6>
-
-
-
-            {{-- <h6 class="col-md-11 text-right"><b>Dr Share :</b>
-                @if (strpos($request->share, '%'))
-                    {{ $request->share }}
-                    <br><b>Dr Amount :</b>
-                    {{ $share }}.00
-                @else
-                    {{ $request->share }}.00
-                @endif
-            </h6> --}}
-
             <br><br>
             <div class="container">
                 <div class="row">
 
                     <div class="col-md-9">
                         <p class="text-center">
-                            Developed By Devicon: Muhammad Awais +92 303 0336939
+                            Developed By Devicon: Muhammad Awais +92 303 0336939 +92 308 3962198
                         </p>
                     </div>
                     <div class="col-md-3 text-center">
+                        {{session()->get('name')}}
                         <p style="text-decoration: overline;font-weight: 600;">
                             User Name
                         </p>
@@ -506,9 +437,9 @@
     <script>
         $(document).ready(function() {
             window.print();
-            setTimeout(function() {
-                window.location.href = 'Mdcn-by-dr-refered'
-            }, 1000);
+            // setTimeout(function() {
+            //     window.location.href = 'Mdcn-by-dr-refered'
+            // }, 1000);
         });
     </script>
 </body>

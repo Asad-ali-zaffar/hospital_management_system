@@ -71,21 +71,6 @@
          "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
          ">"
        });</script>
-       {{-- <script>$('#kt_docs_repeater_basic').repeater({
-        initEmpty: false,
-
-        defaultValues: {
-            'text-input': 'foo'
-        },
-
-        show: function () {
-            $(this).slideDown();
-        },
-
-        hide: function (deleteElement) {
-            $(this).slideUp(deleteElement);
-        }
-    });</script> --}}
     <script>// Class definition
         var KTFormRepeater = function() {
 

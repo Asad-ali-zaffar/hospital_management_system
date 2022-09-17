@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{OPDes,Doctores,PatReferedBy,Labes,madicenes,Roomes};
+use App\Models\{OPDes,Doctores,PatReferedBy,Labes,Madicenes,Roomes};
 use Illuminate\Http\Request;
 
 class OPDesController extends Controller
@@ -16,9 +16,9 @@ class OPDesController extends Controller
     {
         $doctor=Doctores::all();
         $Labes=Labes::all();
-        $madicenes=madicenes::all();
+        $Madicenes=Madicenes::all();
         $url=url('OPD');
-        return view('add_OPD')->with(compact('doctor','Labes','madicenes','url'));
+        return view('add_OPD')->with(compact('doctor','Labes','Madicenes','url'));
     }
 
     /**
@@ -122,8 +122,8 @@ class OPDesController extends Controller
         $url=url('OPD/update')."/".$id;
         $doctor=Doctores::all();
         $Labes=Labes::all();
-        $madicenes=madicenes::all();
-        return view('edit_OPD')->with(compact('data','url','doctor','Labes','madicenes'));
+        $Madicenes=Madicenes::all();
+        return view('edit_OPD')->with(compact('data','url','doctor','Labes','Madicenes'));
     }
 
     /**
@@ -135,6 +135,7 @@ class OPDesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request;
 
         OPDes::where('opd_id',$id)->update([
             'Patient_Name'=>$request->Patient_Name,

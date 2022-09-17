@@ -46,7 +46,7 @@
 
     <div class="page" style="margin-top: 50px;">
         <div class="page-inner">
-            <p class="text-center  mb-0 text-uppercase">MDCN billl</p>
+            <p class="text-center  mb-0 text-uppercase">Medicine Bill</p>
             <h3 class="text-center text-uppercase"><b>Subhan Hospital Chiniot</b></h3>
             <h3 class="text-center text-uppercase">your look is our concern</h3>
             <p class="text-center font-weight-bold mb-0">Jumra Chowk Jhang Road Chiniot</p>
@@ -78,7 +78,7 @@
                         <p style="font-weight: 600;"><b>#</b></p>
                     </div>
                     <div class="col-md-2 text-center mt-1">
-                        <p style="font-weight: 600;"><b>MDCN</b></p>
+                        <p style="font-weight: 600;"><b>Medicine</b></p>
                     </div>
 
                     <div class="col-md-2 text-center mt-1">
@@ -116,7 +116,7 @@
 
                         @endphp
                         @foreach ($buss as $val)
-                            {{ App\Models\madicenes::getLabNameById($val) }}
+                            {{ App\Models\Madicenes::getLabNameById($val) }}
                             <br>
                         @endforeach
                     </div>
@@ -125,7 +125,7 @@
                             $buss = explode(',', $lab->mdcn);
                         @endphp
                         @foreach ($buss as $val)
-                            {{ App\Models\madicenes::getLabPriceById($val) }}.00
+                            {{ App\Models\Madicenes::getLabPriceById($val) }}.00
                             <br>
                         @endforeach
 

@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('lab_id')->nullable();
             // $table->foreign('lab_id')->references('lab_id')->on('labes');
             $table->string('madi_id')->nullable();
-            // $table->foreign('madi_id')->references('madi_id')->on('madicenes');
+            // $table->foreign('madi_id')->references('madi_id')->on('Madicenes');
             $table->dateTime('IN_OUT');
             $table->dateTime('DISCHARGE_DATE');
             $table->unsignedBigInteger('PAT_REFERED_BY');

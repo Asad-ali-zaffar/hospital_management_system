@@ -154,7 +154,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Test Bill</span>
+                                    <span class="menu-title">Lab/Test Billing </span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -164,7 +164,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">Test Bill</span>
+                                                <span class="menu-title">Lab/Test Billing </span>
                                             </a>
                                         </div>
 
@@ -191,7 +191,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Mdcn Bill</span>
+                                    <span class="menu-title">Medicine Billing</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -201,7 +201,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">Mdcn Bill</span>
+                                                <span class="menu-title">Medicine Billing</span>
                                             </a>
                                         </div>
 
@@ -228,7 +228,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">ADMISION</span>
+                                    <span class="menu-title">Admission</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -238,7 +238,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">ADMISION</span>
+                                                <span class="menu-title">Admission</span>
                                             </a>
                                         </div>
 
@@ -382,7 +382,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">All Test Reporting</span>
+                                    <span class="menu-title">Test Reporting</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -419,7 +419,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">All ADMISSION Reporting</span>
+                                    <span class="menu-title">Admission Reporting</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -429,7 +429,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">ADMISSION Reporting</span>
+                                                <span class="menu-title">Admission Reporting</span>
                                             </a>
                                         </div>
 
@@ -456,7 +456,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">All Admission By refered Reporting</span>
+                                    <span class="menu-title">Admissions Referred By Person Reporting</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -466,7 +466,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">Refered Admission Reporting</span>
+                                                <span class="menu-title">Admissions Referred By Person Reporting</span>
                                             </a>
                                         </div>
 
@@ -493,7 +493,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Doctor By refered Mdcn</span>
+                                    <span class="menu-title">Doctor Report (Admission)</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -503,7 +503,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">Mdcn Doctor Reporting</span>
+                                                <span class="menu-title">Doctor Report (Admission)</span>
                                             </a>
                                         </div>
 
@@ -536,7 +536,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Manage Labes</span>
+                                    <span class="menu-title">Manage Lab</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -546,7 +546,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">All Labes</span>
+                                                <span class="menu-title">Manage</span>
                                             </a>
                                         </div>
 
@@ -763,7 +763,7 @@
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Refered Patient</span>
+                                    <span class="menu-title">Referred By Person</span>
                                     <span class="menu-arrow"></span>
                                 </span>
                                 <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -773,7 +773,7 @@
                                                 <span class="menu-bullet">
                                                     <span class="bullet bullet-dot"></span>
                                                 </span>
-                                                <span class="menu-title">Refered by</span>
+                                                <span class="menu-title">Referred By Person</span>
                                             </a>
                                         </div>
                                     </div>

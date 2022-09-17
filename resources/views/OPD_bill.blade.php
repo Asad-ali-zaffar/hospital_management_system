@@ -170,7 +170,7 @@
 
                             @endphp
                             @foreach ($buss as $val)
-                                {{ App\Models\madicenes::getLabNameById($val) }}
+                                {{ App\Models\Madicenes::getLabNameById($val) }}
                                 <br>
                             @endforeach
                         </div>
@@ -179,7 +179,7 @@
                                 $buss = explode(',', $admistion->mdcn_id);
                             @endphp
                             @foreach ($buss as $val)
-                                {{ App\Models\madicenes::getLabPriceById($val) }}.00
+                                {{ App\Models\Madicenes::getLabPriceById($val) }}.00
                                 <br>
                             @endforeach
 

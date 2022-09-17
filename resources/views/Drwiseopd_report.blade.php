@@ -37,7 +37,7 @@
                                                 @enderror
                                             </span>
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        {{-- <div class="form-group col-md-4">
                                             <label for="exampleFormControlInput1" class="required form-label">Doctor Name</label>
                                             <div class="form-floating input-group input-group-solid mb-5">
                                                 <select class="form-select all_sum" id="dr_id" name="dr_id"
@@ -55,7 +55,7 @@
                                                     {{ $message }}
                                                 @enderror
                                             </span>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-md-4">
                                             <label for="basic-url" class="required form-label">Share</label>
                                             <div class="input-group input-group-solid mb-5">
@@ -105,11 +105,11 @@
     <script>
         $(document).ready(function() {
             var total = 0;
-            $(document).on("change", "#dr_id", function() {
+            $(document).on("change", "#To", function() {
                 // console.log('helo');
                 fromdate = $('#from').val();
                 ToDate = $('#To').val();
-                dr_id = $('#dr_id').val();
+                // dr_id = $('#dr_id').val();
                 Report = report(fromdate, ToDate);
                 console.log(Report);
             });
@@ -122,7 +122,7 @@
                     data: {
                         from: fromdate,
                         To: ToDate,
-                        dr_id: dr_id
+                        // dr_id: dr_id
                     },
 
                     success: function(response) {

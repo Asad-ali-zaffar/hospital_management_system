@@ -42,8 +42,8 @@
                                             <label for="basic-url" class="required form-label">Share</label>
                                             <div class="input-group input-group-solid mb-5">
                                                 <input type="text" name="share" class="form-control " id="share"
-                                                    aria-label="Amount (to the nearest dollar)"
-                                                    value="{{ old('share') }}" min="0" maxlength="11" />
+                                                    aria-label="Amount (to the nearest dollar)" value="{{ old('share') }}"
+                                                    min="0" maxlength="11" />
                                             </div>
                                             <span class="text-danger">
                                                 @error('share')
@@ -52,18 +52,18 @@
                                             </span>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="exampleFormControlInput1"class="required form-label">Total Amount</label>
-                                             <div class="input-group input-group-solid mb-5">
-                                                 <input type="text" name="total" class="form-control total"
-                                                     aria-label="Amount (to the nearest dollar)"
-                                                     value="0" />
-                                                 <span class="text-danger">
-                                                     @error('procedure')
-                                                         {{ $message }}
-                                                     @enderror
-                                                 </span>
-                                             </div>
-                                         </div>
+                                            <label for="exampleFormControlInput1" class="required form-label">Total
+                                                Amount</label>
+                                            <div class="input-group input-group-solid mb-5">
+                                                <input type="text" name="total" class="form-control total"
+                                                    aria-label="Amount (to the nearest dollar)" value="0" />
+                                                <span class="text-danger">
+                                                    @error('procedure')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <div class="form-group col-md-4 mt-8">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -80,19 +80,20 @@
             </div>
         </div>
     </div>
- <!-- #/ container -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
- integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
- crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script>
-    $(document).ready(function() {
-      var  total=0;
-        $(document).on("change", "#To", function() {
+    <!-- #/ container -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            var total = 0;
+            $(document).on("change", "#To", function() {
                 fromdate = $('#from').val();
                 ToDate = $('#To').val();
                 Report = report(fromdate, ToDate);
                 console.log(Report);
             });
+
             function report(fromdate, ToDate) {
 
                 $.ajax({
@@ -100,7 +101,7 @@
                     method: 'get',
                     data: {
                         fromdate: fromdate,
-                        ToDate:ToDate
+                        ToDate: ToDate
                     },
 
                     success: function(response) {
@@ -132,10 +133,10 @@
                             discount = discount.replace(/\%/, '');
                         });
                         console.log(discount);
-                           let discount_c=(total*discount)/100;
-                           let resultes=total-discount_c;
-                            console.log(discount_c);
-                            $('.total').val(resultes);
+                        let discount_c = (total * discount) / 100;
+                        let resultes = total - discount_c;
+                        console.log(discount_c);
+                        $('.total').val(resultes);
                     } else {
                         let resultes = total - discount;
                         console.log(resultes);
@@ -145,7 +146,6 @@
                 }
 
             });
-});
- </script>
-
+        });
+    </script>
 @endsection

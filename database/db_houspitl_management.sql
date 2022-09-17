@@ -238,10 +238,10 @@ CREATE TABLE `logins` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `madicenes`
+-- Table structure for table `Madicenes`
 --
 
-CREATE TABLE `madicenes` (
+CREATE TABLE `Madicenes` (
   `madi_id` bigint(20) UNSIGNED NOT NULL,
   `madi_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `madi_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -252,10 +252,10 @@ CREATE TABLE `madicenes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `madicenes`
+-- Dumping data for table `Madicenes`
 --
 
-INSERT INTO `madicenes` (`madi_id`, `madi_name`, `madi_type`, `madi_priceP`, `madi_priceS`, `created_at`, `updated_at`) VALUES
+INSERT INTO `Madicenes` (`madi_id`, `madi_name`, `madi_type`, `madi_priceP`, `madi_priceS`, `created_at`, `updated_at`) VALUES
 (1, 'xyz 100mg', 'Tablet', 12, 7, '2022-08-26 07:26:31', '2022-09-05 08:36:14'),
 (2, 'abc', 'syrup', 140, 70, '2022-08-26 07:26:51', '2022-08-26 07:26:51'),
 (3, 'wwe 50mg', 'Tablet', 120, 60, '2022-08-26 07:27:24', '2022-08-26 07:27:37'),
@@ -315,8 +315,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (232, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (233, '2022_08_06_100141_create_logins_table', 1),
 (234, '2022_08_07_101022_create_labes_table', 1),
-(235, '2022_08_07_152945_create_madicenes_table', 1),
-(236, '2022_08_09_114848_add_columns_to_madicenes_table', 1),
+(235, '2022_08_07_152945_create_Madicenes_table', 1),
+(236, '2022_08_09_114848_add_columns_to_Madicenes_table', 1),
 (237, '2022_08_09_123342_create__m_d_c_nes_table', 1),
 (238, '2022_08_09_142403_create_lab_lists_table', 1),
 (239, '2022_08_10_073100_create_roles_table', 1),
@@ -663,9 +663,9 @@ ALTER TABLE `logins`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Indexes for table `madicenes`
+-- Indexes for table `Madicenes`
 --
-ALTER TABLE `madicenes`
+ALTER TABLE `Madicenes`
   ADD PRIMARY KEY (`madi_id`);
 
 --
@@ -823,9 +823,9 @@ ALTER TABLE `logins`
   MODIFY `admin_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `madicenes`
+-- AUTO_INCREMENT for table `Madicenes`
 --
-ALTER TABLE `madicenes`
+ALTER TABLE `Madicenes`
   MODIFY `madi_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -941,7 +941,7 @@ ALTER TABLE `users_roles`
 --
 ALTER TABLE `walking_test_mdcns`
   ADD CONSTRAINT `walking_test_mdcns_lab_id_foreign` FOREIGN KEY (`lab_id`) REFERENCES `labes` (`lab_id`),
-  ADD CONSTRAINT `walking_test_mdcns_madi_id_foreign` FOREIGN KEY (`madi_id`) REFERENCES `madicenes` (`madi_id`);
+  ADD CONSTRAINT `walking_test_mdcns_madi_id_foreign` FOREIGN KEY (`madi_id`) REFERENCES `Madicenes` (`madi_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

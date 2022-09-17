@@ -130,7 +130,7 @@
                                             </span>
                                             <!--end::Input group-->
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        {{-- <div class="form-group col-md-4">
                                             <label for="basic-url" class="required form-label">Husband cnic no</label>
                                             <div class="input-group input-group-solid mb-5">
                                                 <span class="input-group-text fa fa-id-card"></span>
@@ -145,7 +145,7 @@
                                                 @enderror
                                             </span>
                                             <!--end::Input group-->
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-md-4">
                                             <!--begin::Input group-->
                                             <label for="exampleFormControlInput1" class="required form-label">Date</label>
@@ -353,10 +353,10 @@
                                                                 @php
                                                                   $Lab_Quantity= explode(',', $dat->Lab_Quantity);
                                                                  @endphp
-                                                                <input type="number" name="Lab_Quantity[]"
-                                                                    class="form-control Lab_discount"
+                                                                <input type="number" name="Lab_Quantity[ ]"
+                                                                    class="form-control Lab_discount disabled"
                                                                     aria-label="Amount (to the nearest dollar)"
-                                                                    id="Lab_discount-0" value="{{$Lab_Quantity[$key]}}" min="0" />
+                                                                    id="Lab_discount-{{$key}}" value="{{$Lab_Quantity[$key]}}" min="0" />
                                                                 <span class="input-group-text">%</span>
                                                                 <span class="text-danger">
                                                                     @error('Lab_price')
@@ -374,7 +374,7 @@
                                                                 <input type="number" name="Lab_Price[]"
                                                                     class="form-control Lab_Price"
                                                                     aria-label="Amount (to the nearest dollar)" value="{{$Lab_Price[$key]}}"
-                                                                    min="0" id="lab_prices-0" />
+                                                                    min="0" id="lab_prices-{{$key}}" readonly/>
                                                                 <span class="input-group-text">.00</span>
                                                                 <span class="text-danger">
                                                                     @error('Lab_price')
@@ -392,6 +392,7 @@
                                                 </tbody>
                                                 <div class="container">
                                                     <td style="display: none">
+
                                                         <input class="form-control all_sum" name="Labsum" type="number"
                                                             id="sumcv" placeholder="Total CV Ammount" value="{{$dat->Labsum}}">
                                                     </td>
@@ -401,7 +402,7 @@
                                         </div>
                                     </div>
                                 </legend>
-                                <fieldset class="required form-label">MDCN</fieldset>
+                                <fieldset class="required form-label">Medicine</fieldset>
                                 <legend class="form-control">
                                     <div class="container">
                                         <div class="row">
@@ -410,9 +411,9 @@
 
                                                 <thead>
                                                     <tr>
-                                                        <th class="required">Select MDCN</th>
-                                                        <th class="required">Quantity(MDCN)</th>
-                                                        <th class="required">MDCN Price</th>
+                                                        <th class="required">Select Medicine</th>
+                                                        <th class="required">Quantity(Medicine)</th>
+                                                        <th class="required">Medicine Price</th>
                                                         <th style="display: none"><input id="addrow-1"
                                                                 class="btn btn-primary btnsmall text-right"
                                                                 value="Add Row"></th>
@@ -434,8 +435,8 @@
                                                             <div class="form-floating input-group input-group-solid mb-5">
                                                                 <select class="form-select mdcn" name="mdcn[]" id="mdcn-{{$key}}"
                                                                     aria-label="Floating label select example">
-                                                                    <option value="{{$da}}" selected>{{App\Models\madicenes::getLabNameById($da)}}</option>
-                                                                    @foreach ($madicenes as $vall)
+                                                                    <option value="{{$da}}" selected>{{App\Models\Madicenes::getLabNameById($da)}}</option>
+                                                                    @foreach ($Madicenes as $vall)
                                                                     @if($da != $vall->madi_id)
                                                                         <option value="{{ $vall->madi_id }}">
                                                                             {{ $vall->madi_name }}
@@ -460,8 +461,8 @@
                                                                 @php
                                                                   $mdcn_Quantity= explode(',', $dat->mdcn_Quantity);
                                                                  @endphp
-                                                                <input type="number" name="mdcn_Quantity[]"
-                                                                    id="mdcn_discount-0" class="form-control mdcn_discount"
+                                                                <input type="number" name="mdcn_Quantity[ ]"
+                                                                    id="mdcn_discount-{{$key}}" class="form-control mdcn_discount disabled-mdcn"
                                                                     aria-label="Amount (to the nearest dollar)" value="{{$mdcn_Quantity[$key]}}"
                                                                     min="0" />
                                                                 <span class="input-group-text">%</span>
@@ -481,7 +482,7 @@
                                                                 <input type="number" name="MDCN_Price[]" id="MDCN_Price-{{$key}}"
                                                                     class="form-control MDCN_Price"
                                                                     aria-label="Amount (to the nearest dollar)" value="{{$MDCN_Price[$key]}}"
-                                                                    min="0" />
+                                                                    min="0" readonly />
                                                                 <span class="input-group-text">.00</span>
                                                                 <span class="text-danger">
                                                                     @error('MDCN_Price')
@@ -499,6 +500,7 @@
                                                 </tbody>
                                                 <div class="container">
                                                     <td style="display: none">
+
                                                         <input class="form-control all_sum" name="Mdcnammount" type="number"
                                                             id="sumcv-Mdcn" placeholder="Total CV Ammount" value="{{$dat->Mdcnammount}}">
                                                     </td>
@@ -562,10 +564,13 @@
         let MDCN_Price;
         let test_price;
         $(document).ready(function() {
+            $(".disabled").attr("readonly", true);
+            $(".disabled-mdcn").attr("readonly", true);
             $(document).on("change", ".mdcn", function() {
                 mdcn_id = $(this).val();
                 curent_id = $(this).attr('id');
                 curent_id = curent_id.replace("mdcn-", "");
+                $('#mdcn_discount-' + curent_id).attr("readonly", false);
                 mdcn_vari = mdcnDropdown(mdcn_id, curent_id);
                 console.log($('#mdcn_discount-' + curent_id).val());
                 lab = parseFloat(MDCN_Price) + parseFloat($('#sumcv-Mdcn').val());
@@ -586,7 +591,7 @@
 
             function mdcnDropdown(mdcn_id, curent_id) {
                 $.ajax({
-                    url: '/madcn-dropdown',
+                    url: '/madcn-dropdown1',
                     method: 'get',
                     data: {
                         mdcn_id: mdcn_id
@@ -608,6 +613,7 @@
                 let lab_id = $(this).val();
                 curent_id = $(this).attr('id');
                 curent_id = curent_id.replace("lab-dropdown-", "");
+                $('#Lab_discount-' + curent_id).attr("readonly", false);
                 let vari = programsDropdown(lab_id, curent_id);
                 $('#Lab_discount-' + curent_id).val("0");
                 lab = parseFloat(lab_price) + parseFloat($('#sumcv').val());
@@ -620,7 +626,6 @@
                 curent_id = curent_id.replace("Lab_discount-", "");
                 if (lab_discount != "") {
                     let result = lab_price * lab_discount;
-                    // total = lab_price - result;
                     total = result;
                     $('#lab_prices-' + curent_id).val(total);
                 }
@@ -630,7 +635,7 @@
             function programsDropdown(lab_id, curent_id) {
                 // console.log(lab_id);
                 $.ajax({
-                    url: '/mdcn-dropdown',
+                    url: '/mdcn-dropdown1',
                     method: 'get',
                     data: {
                         lab_id: lab_id
@@ -684,7 +689,6 @@
                 console.log(total);
                 $('#sumcv-Mdcn').val(total);
 
-                // event.preventDefault();
             });
 
 
@@ -770,7 +774,7 @@
                     $("#sumdv").val(dvamou);
                 });
             });
-            var arrayFromPHP = <?php echo json_encode($madicenes); ?>;
+            var arrayFromPHP = <?php echo json_encode($Madicenes); ?>;
 
             function rows_fu() {
                 count++;
@@ -873,7 +877,7 @@
                 });
             };
             $(document).on('keyup','.all_sum,.mdcn_discount,.Lab_discount',function(){
-                drFee=parseFloat(dr_fee);
+                drFee=parseFloat($('#dr_fee').val());
                 sumcv=parseFloat($('#sumcv').val());
                 sumcvMdcn=parseFloat($('#sumcv-Mdcn').val());
                 sumall=drFee+sumcv+sumcvMdcn;

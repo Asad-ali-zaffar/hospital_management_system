@@ -76,8 +76,8 @@
                                             <th>Generator/UPS charges</th>
                                             <th>Labes</th>
                                             <th>Labes Bill</th>
-                                            <th>MDCN</th>
-                                            <th>MDCN Bill</th>
+                                            <th>Madison</th>
+                                            <th>Madison Bill</th>
                                             <th>Total Bill</th>
                                             <th>Action</th>
                                         </tr>
@@ -129,7 +129,7 @@
                                             @endforeach</td>
                                             <td>{{$val->Labsum }}</td>
                                             <td>@foreach ($buss as $v)
-                                                {{ App\Models\madicenes::getLabNameById($v)}}
+                                                {{ App\Models\Madicenes::getLabNameById($v)}}
                                             @endforeach</td>
                                             <td>{{$val->Mdcnammount  }}</td>
                                             <td>{{$val->total}}</td>

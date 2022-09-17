@@ -19,10 +19,10 @@
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
                                 <span class="card-label fw-bolder fs-3 mb-1">{{$title}}</span>
-                                <span class="text-muted mt-1 fw-bold fs-7">Overall {{$total}} madicenes</span>
+                                <span class="text-muted mt-1 fw-bold fs-7">Overall {{$total}} Madicenes</span>
                             </h3>
                             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top"
-                                data-bs-trigger="hover" title="Click to add a Medicine">
+                                data-bs-trigger="hover" title="Click to add a Madicen">
                                 <a href="{{url('Madicenes')}}" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle=""
                                     data-bs-target="">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -34,7 +34,7 @@
                                             <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
                                         </svg>
                                     </span>
-                                    <!--end::Svg Icon-->New Medicine
+                                    <!--end::Svg Icon-->New Madicen
                                 </a>
                             </div>
                         </div>
@@ -51,8 +51,8 @@
                                             <th>#</th>
                                             <th class="text-center">Name</th>
                                             <th class="text-center">Type</th>
-                                            <th class="text-center">Medicine Price(Private)</th>
-                                            <th class="text-center">Medicine Price(Sehat Card)</th>
+                                            <th class="text-center">Madicen Price(Private)</th>
+                                            <th class="text-center">Madicen Price(Sehat Card)</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -60,7 +60,7 @@
                                         @php
                                             $i=1;
                                         @endphp
-                                        @foreach ($madicenes as $val )
+                                        @foreach ($Madicenes as $val )
                                         <tr>
                                             <td>{{$i}}</td>
                                             <td class="text-center">{{$val->madi_name}}</td>

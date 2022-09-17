@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('lab_id')->references('lab_id')->on('labes');
             $table->bigInteger('lab_DISCOUNT');
             $table->unsignedBigInteger('madi_id');
-            $table->foreign('madi_id')->references('madi_id')->on('madicenes');
+            $table->foreign('madi_id')->references('madi_id')->on('Madicenes');
             $table->bigInteger('mdcn_DISCOUNT');
             $table->string('test_type');
             $table->bigInteger('test_Price');

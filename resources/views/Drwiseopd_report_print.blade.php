@@ -91,19 +91,19 @@
                         </p>
                     </div>
                     <div class="col-md-1 text-left mt-1">
-                        <p style="font-weight: 600;"><b>total Amount</b>
+                        <p style="font-weight: 600;"><b>Amt</b>
                         </p>
                     </div>
                     <div class="col-md-1 text-left mt-1">
-                        <p style="font-weight: 600;"><b>Referred By</b>
+                        <p style="font-weight: 600;"><b>Ref</b>
                         </p>
                     </div>
                     <div class="col-md-1 text-left mt-1">
-                        <p style="font-weight: 600;"><b>Referred share</b>
+                        <p style="font-weight: 600;"><b>Ref share</b>
                         </p>
                     </div>
                     <div class="col-md-1 text-left mt-1">
-                        <p style="font-weight: 600;"><b>Dr Share</b>
+                        <p style="font-weight: 600;" ><b>Dr name</b>
                         </p>
                     </div>
                     <div class="col-md-1 text-left mt-1">
@@ -130,7 +130,7 @@
                             <p>{{ date('d-m-Y', strtotime($val->date)) }}
                             </p>
                         </div>
-                        <div class="col-md-1 text-left mt-2">
+                        <div class="col-md-1 text-left mt-2" style="overflow:auto" >
                             <p style="font-weight: 600;">{{ $val->visit_no }}
                             </p>
                         </div>
@@ -138,11 +138,11 @@
                             <p style="font-weight: 600;">{{ App\Models\procedure::getprocedureById($val->procedure) }}
                             </p>
                         </div>
-                        <div class="col-md-1 text-center mt-2">
+                        <div class="col-md-1 text-left mt-2">
                             <p style="font-weight: 600;">{{ $val->total }}
                             </p>
                         </div>
-                        <div class="col-md-1 text-center mt-2">
+                        <div class="col-md-1 text-left mt-2">
                             <p style="font-weight: 600;">{{ App\Models\PatReferedBy::getPatReferedById($val->PAT_REFERED_BY) }}
                             </p>
                         </div>
@@ -151,7 +151,7 @@
                         @php
                             $sum += $val->total;
                         @endphp
-                        <div class="col-md-1 text-center mt-2">
+                        <div class="col-md-1 text-left mt-2">
 
                             <p style="font-weight: 600;">
                                 @if (strpos(App\Models\procedure::getprocedureshareById($val->procedure), '%'))
@@ -174,6 +174,7 @@
                         </div>
                         <div class="col-md-1 text-left mt-2">
                             <p style="font-weight: 600;">
+                                {{ App\Models\Doctores::getDoctoresById($val->dr_name) }}<br>
                                 @if (strpos($request->share, '%'))
                                     @php
                                         $Drshare = str_replace(' ', '%', $request->share);
@@ -181,13 +182,10 @@
                                         $total =$val->total- $shareDr;
                                         $share += $shareDr;
                                     @endphp
-                                    {{$request->share}}<br>
-                                    {{ $shareDr }}.00
                                 @else
                                     @php
                                         $share += $request->share;
                                     @endphp
-                                    {{ $request->share }}.00
                                 @endif
 
                             </p>
@@ -214,7 +212,7 @@
                 <div class="col-md-8" style="font-weight: 600; border: 1px solid;">
                     <div class="row">
                         <p class="col-md-10 text-left mt-2 border-right">
-                            Total Local Patient Amount
+                            Total amount
                         </p>
                         <p class="col-md-2 text-left mt-2">
                             {{ $sum }}
@@ -232,7 +230,7 @@
                 <div class="col-md-8" style="font-weight: 600; border: 1px solid;">
                     <div class="row">
                         <p class="col-md-10 text-left mt-2 border-right">
-                            Dr {{ App\Models\Doctores::getDoctoresById($request->dr_id) }}
+                            Doctors Share
                         </p>
                         <p class="col-md-2 text-left mt-2">
                             {{ $share }}

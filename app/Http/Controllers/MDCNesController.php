@@ -61,10 +61,10 @@ class MDCNesController extends Controller
      */
     public function show()
     {
-        $madicenes=MDCNes::paginate();
-        $total=count($madicenes);
+        $Madicenes=MDCNes::paginate();
+        $total=count($Madicenes);
         $title="MDCN";
-        return view('MDCN-view')->with(compact('madicenes','total','title'));
+        return view('MDCN-view')->with(compact('Madicenes','total','title'));
     }
 
     /**

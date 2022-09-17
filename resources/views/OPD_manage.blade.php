@@ -67,10 +67,10 @@
                                             <th>Lab Quantity</th>
                                             <th>Lab Price</th>
                                             <th>Labes Bill</th>
-                                            <th>MDCN</th>
-                                            <th>MDCN Quantity</th>
-                                            <th>MDCN Price</th>
-                                            <th>MDCN Bill</th>
+                                            <th>Medicine</th>
+                                            <th>Medicine Quantity</th>
+                                            <th>Medicine Price</th>
+                                            <th>Medicine Bill</th>
                                             <th>Discount</th>
                                             <th>Total Bill</th>
                                             <th>Action</th>
@@ -123,7 +123,7 @@
                                             @endforeach</td>
                                             <td>{{$val->Labsum }}</td>
                                             <td>@foreach ($mdcn_id as $v)
-                                                {{ App\Models\madicenes::getLabNameById($v)}}
+                                                {{ App\Models\Madicenes::getLabNameById($v)}}
                                             @endforeach</td>
                                             <td>@foreach ($mdcn_Quantity as $v)
                                                 {{$v}}

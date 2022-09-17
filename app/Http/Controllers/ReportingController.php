@@ -261,7 +261,6 @@ class ReportingController extends Controller
         $ToDate = $request->To;
         $ADMISIONES = ADMISIONES::whereDate('date', '>=', $fromdate)
             ->whereDate('date', '<=', $ToDate)
-            ->where('dr_name', $request->dr_id)
             ->get();
         $Total_Bill = 0;
         foreach ($ADMISIONES as $val) {
@@ -276,7 +275,6 @@ class ReportingController extends Controller
         $request->validate([
             'from' => 'required|date',
             'To' => 'required|date',
-            'dr_id' => 'required',
             'share' => 'required',
         ]);
         $fromdate = $request->from;
@@ -284,7 +282,6 @@ class ReportingController extends Controller
     //  return  $ADMISIONES = ADMISIONES::select('Patient_Name','date','time', 'mr_no', 'visit_no', 'CASE_TYPE', 'Type_Department', 'PAT_REFERED_BY', 'lab_id', 'Lab_Quantity', 'Lab_Price', 'Labsum', 'madi_id', 'mdcn_Quantity', 'MDCN_Price', 'Mdcnammount')
        $ADMISIONES = ADMISIONES::whereDate('date', '>=', $fromdate)
             ->whereDate('date', '<=', $ToDate)
-            ->where('dr_name', $request->dr_id)
             ->get();
         $Total_Bill = 0;
         foreach ($ADMISIONES as $val) {
@@ -393,14 +390,12 @@ class ReportingController extends Controller
         ]);
         $fromdate = $request->from;
         $ToDate = $request->To;
-        $ADMISIONES = ADMISIONES::select('Patient_Name', 'dr_name', 'mr_no', 'visit_no', 'CASE_TYPE', 'Type_Department', 'lab_id', 'Lab_Quantity', 'Lab_Price', 'Labsum', 'madi_id', 'mdcn_Quantity', 'MDCN_Price', 'Mdcnammount', 'dcnammount', 'total')
-            ->whereDate('date', '>=', $fromdate)
+        $ADMISIONES = ADMISIONES::whereDate('date', '>=', $fromdate)
             ->whereDate('date', '<=', $ToDate)
             ->where('dr_name', $request->dr_id)
             ->get();
         //5652 40983 5652"}]
-        $opd = OPDes::select('Patient_Name', 'mr_no', 'visit_no', 'Type_Department', 'lab_id', 'Lab_Quantity', 'Lab_Price', 'Labsum', 'mdcn_id', 'mdcn_Quantity', 'MDCN_Price', 'Mdcnammount', 'discount', 'total')
-            ->whereDate('date', '>=', $fromdate)
+        $opd = OPDes::whereDate('date', '>=', $fromdate)
             ->whereDate('date', '<=', $ToDate)
             ->where('dr_name', $request->dr_id)
             ->get();

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{ADMISIONES, Doctores, PatReferedBy, Labes, madicenes, Roomes,procedure};
+use App\Models\{ADMISIONES, Doctores, PatReferedBy, Labes, Madicenes, Roomes,procedure};
 use Illuminate\Http\Request;
 
 class ADMISIONESController extends Controller
@@ -18,11 +18,11 @@ class ADMISIONESController extends Controller
         $doctor = Doctores::all();
         $PatReferedBy = PatReferedBy::all();
         $Labes = Labes::all();
-        $madicenes = madicenes::all();
+        $Madicenes = Madicenes::all();
         $Roomes = Roomes::all();
         $procedure=procedure::all();
         $url = url('ADMISIONES');
-        return view('add_admintion')->with(compact('url', 'procedure','doctor', 'PatReferedBy', 'Labes', 'madicenes', 'Roomes'));
+        return view('add_admintion')->with(compact('url', 'procedure','doctor', 'PatReferedBy', 'Labes', 'Madicenes', 'Roomes'));
     }
 
     /**
@@ -144,11 +144,11 @@ class ADMISIONESController extends Controller
         $doctor = Doctores::all();
         $PatReferedBy = PatReferedBy::all();
         $Labes = Labes::all();
-        $madicenes = madicenes::all();
+        $Madicenes = Madicenes::all();
         $Roomes = Roomes::all();
         $procedure=procedure::all();
         $url = url('ADMISIONES/update') . '/' . $id;
-        return view('edit_admission')->with(compact('data','procedure', 'url', 'doctor', 'PatReferedBy', 'Labes', 'madicenes', 'Roomes'));
+        return view('edit_admission')->with(compact('data','procedure', 'url', 'doctor', 'PatReferedBy', 'Labes', 'Madicenes', 'Roomes'));
     }
 
     /**

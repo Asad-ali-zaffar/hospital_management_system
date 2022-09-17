@@ -20,7 +20,7 @@
                                     </span>
                                 </div>
                                 <!--begin::Input group-->
-                                <label for="exampleFormControlInput1" class="required form-label">Medicine Price(Private)</label>
+                                <label for="exampleFormControlInput1" class="required form-label">Madicen Price(Private)</label>
                                 <div class="input-group input-group-solid mb-5">
                                     <span class="input-group-text">Rs</span>
                                     <input type="number" name="madi_priceP" class="form-control"
@@ -32,7 +32,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <label for="exampleFormControlInput1" class="required form-label">Medicine Price(Sehat Card)</label>
+                                <label for="exampleFormControlInput1" class="required form-label">Madicen Price(Sehat Card)</label>
                                 <div class="input-group input-group-solid mb-5">
                                     <span class="input-group-text">Rs</span>
                                     <input type="number" name="madi_priceS" class="form-control"
@@ -44,7 +44,7 @@
                                         @enderror
                                     </span>
                                 </div>
-                                <label for="basic-url" class="required form-label">Medicine Type/(Tablet,syrup)</label>
+                                <label for="basic-url" class="required form-label">Madicen Type/(Tablet,syrup)</label>
 
                                 <!--begin::Input group-->
                                 <div class="form-floating input-group input-group-solid mb-5">
